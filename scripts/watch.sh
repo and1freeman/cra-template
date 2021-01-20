@@ -17,9 +17,9 @@ update_index() {
 
   # delete file content
   truncate -s 0 $INDEX_PATH
-
-  FILES=(`find $FOLDER -type f \( -name "*.jsx" -or -name "*.js" ! -iname "index.js" -not -path "*/utils/*" \)`)
-
+  
+  FILES=(`find $FOLDER -type f \( -name "*.jsx" -or -name "*.js" ! -iname "index.js" ! -iname "*\.test\.*" -not -path "*/utils/*" \)`)
+  
   pushd $FOLDER
 
   for f in "${FILES[@]}";
